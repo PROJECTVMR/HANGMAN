@@ -7,7 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
+//good but what a fuck no comments why
+//This is not a good approch,i told you we must use Oriented object concept it is more maintenable
 public class hangman {
     public static void main(String args[]){
         Scanner scan = new Scanner(System.in);
