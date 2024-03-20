@@ -67,6 +67,7 @@ public class Server {
                         File myFile = new File("dictionary.txt");
                         Extract_word wordd = new Extract_word(myFile);
                         String word_to_guess = wordd.extract();
+                        word_to_guess = word_to_guess.toUpperCase();
                         Thread receiveThread = new Thread(new Game(in,out, word_to_guess, 6 ));
                         receiveThread.start();
                     } catch (Exception e) {
@@ -181,7 +182,7 @@ public class Server {
         //display the print out what user see
         public void displayProgress()
         {   
-            Scanner sc = new Scanner(System.in);
+            /* Scanner sc = new Scanner(System.in); */
             out.println("attempts remaining: "+attempts_remaining);
             out.println("number of found letters: "+number_guessed_letters);
             out.println("guess a letter: "+current_progress);
