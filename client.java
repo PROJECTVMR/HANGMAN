@@ -36,7 +36,7 @@ public class client{
                 @Override
                 public void run() {
                     while(true) {
-                      System.out.println("You :");
+                      /* System.out.println(">"); */
                         msg = scan.nextLine();
                         out.println(msg);
                         out.flush();  } } });
@@ -51,7 +51,7 @@ public class client{
                     try {
                         msg = in.readLine();
                         while(msg != null) {
-                            System.out.println("Server: " + msg);
+                            System.out.println(msg);
                             msg = in.readLine();
                         }
                         System.out.println("Server disconnected");
