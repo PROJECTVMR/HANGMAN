@@ -1,4 +1,8 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.*;
+
 
 public class Game{
     //All the instances variable
@@ -10,6 +14,7 @@ public class Game{
     private int attempts_remaining;
     private boolean is_game_over;
     private int number_guessed_letters;
+    
 
 
     //constructor to initiate game object
@@ -140,11 +145,11 @@ return false;
 
 
 //there is the logic of the game
-public static void play()
+public static void play(String word_to_guess)
 {
 
-
-    Game mygame= new Game("PYTHON",6);
+    
+    Game mygame= new Game(word_to_guess,6);
     mygame.banner();
     while(!mygame.isGameOver())
     {
@@ -157,10 +162,63 @@ public static void play()
 }
 
 
+static class Extract_word{
+    
+    private File dictionary_file ;
+    String word ;
+    
+    /* constructor that take as parameter a dictionary file */
+    Extract_word(File myDict){
+        this.dictionary_file = myDict ; 
+    }
+
+    
+    /* the method to extract the word to guess */
+    public String extract(){
+        try {
+            
+            FileReader toRead = new FileReader(this.dictionary_file);
+            BufferedReader reader = new BufferedReader(toRead);
+            ArrayList<String> lines = new ArrayList<>();
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+            reader.close();
+
+            Random random = new Random();
+            int randomIndex = random.nextInt(lines.size());
+            String randomLine = lines.get(randomIndex);
+
+             // Afficher la ligne aléatoire
+            String word_to_guess = randomLine;
+            word = word_to_guess;
+
+        } catch (Exception e) {
+           System.err.println(e);
+        }
+        return word ;
+    }
+    
+    
+    
+}
+
+
   
 public static void main(String args[])
     {
-  Game.play();
+        try {
+            File  myFile = new File("dictionary.txt");
+            Extract_word wordd = new Extract_word(myFile);
+            String word_to_guess = wordd.extract();
+            Game.play(word_to_guess);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+   
+    
    
     }
     
