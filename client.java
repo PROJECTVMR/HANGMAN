@@ -2,16 +2,6 @@ import java.util.Scanner;
 import java.net.Socket;
 import java.io.*;
 import java.net.InetAddress;
-/*import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.BufferedReader;
-import java.io.IOException;*/
-
-
-
-
 
 
 public class client{
